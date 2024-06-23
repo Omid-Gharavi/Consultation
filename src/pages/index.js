@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <div className="relative min-h-screen">
         <Header />
-        <Image className="absolute" fill objectFit="cover" src={Hero} />
+        <Image className="absolute -z-10" fill objectFit="cover" src={Hero} />
       </div>
     </main>
   );
