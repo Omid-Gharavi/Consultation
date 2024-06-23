@@ -9,6 +9,7 @@ export default function Home() {
         <Header />
         <Image className="absolute -z-10" fill objectFit="cover" src={Hero} />
       </div>
+      sdffffffffffffffffffffffff
     </main>
   );
 }
