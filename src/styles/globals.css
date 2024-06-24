@@ -11,4 +11,12 @@ body {
     @apply fixed px-4 pt-6 top-0 left-0 w-56 h-screen bg-[#473BF0];
     transition: .5s ease;
   }
+
+  .lists span {
+    transition: .3s ease;
+  }
+
+  .lists:hover span {
+    @apply w-full;
+  }
 }

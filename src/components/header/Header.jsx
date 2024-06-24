@@ -4,27 +4,27 @@ import logo from '@/images/logo.svg'
 import Link from 'next/link'
 import SideMenu from '../sideMenu/SideMenu'
 
+export const lists = [
+    {
+        text: 'Demos',
+        href: '#'
+    },
+    {
+        text: 'Pages',
+        href: '#'
+    },
+    {
+        text: 'Support',
+        href: '#'
+    },
+    {
+        text: 'Contact',
+        href: '#'
+    },
+]
+
 const Header = () => {
     const [toggle, setToggle] = useState(false)
-
-    const lists = [
-        {
-            text: 'Demos',
-            href: '#'
-        },
-        {
-            text: 'Pages',
-            href: '#'
-        },
-        {
-            text: 'Support',
-            href: '#'
-        },
-        {
-            text: 'Contact',
-            href: '#'
-        },
-    ]
 
     return (
         <>
@@ -42,9 +42,11 @@ const Header = () => {
                             }
                         </ul>
                     </div>
-                    <div className='max-lg:hidden bg-[#473BF0] flex justify-center items-center w-[151px] h-[50px] rounded-lg text-white'>
+                    <Link
+                        href={'#'}
+                        className='max-lg:hidden bg-[#473BF0] flex justify-center items-center w-[151px] h-[50px] rounded-lg text-white transition-all duration-100 ease-linear hover:bg-[#2e2b59]'>
                         Get started now
-                    </div>
+                    </Link>
                     <div className='w-8 hidden flex-col gap-1 max-lg:flex' onClick={() => setToggle(!toggle)}>
                         <div className='bg-white h-1 rounded-md'></div>
                         <div className='bg-white h-1 rounded-md'></div>
@@ -63,9 +65,10 @@ const Header = () => {
 
 const Lists = ({ text, href = '#' }) => {
     return (
-        <li>
-            <Link className='transition-all duration-100 ease-linear hover:text-[#473BF0]' href={href}>{text}</Link>
-        </li>
+        <Link href={href} className='relative lists py-2'>
+            <li>{text}</li>
+            <span className='absolute top-[80%] left-0 w-0 h-[2px] bg-[rgb(98,92,173)]'></span>
+        </Link>
     )
 }
 
