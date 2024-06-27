@@ -34,7 +34,7 @@ const Services = () => {
                     With lots of unique blocks, you can easily build a page without coding. Build your next landing page.
                 </p>
             </div>
-            <div className='flex gap-7'>
+            <div className='flex flex-wrap justify-center gap-7'>
                 {
                     lists.map((list, index) => (
                         <div key={index + 1}>
