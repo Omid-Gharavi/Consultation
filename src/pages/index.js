@@ -8,8 +8,8 @@ import Services from "@/components/Services/Services";
 export default function Home() {
   return (
     <main>
+      <Header />
       <div className="relative min-h-screen">
-        <Header />
         <HeroSection />
         <Image className="absolute -z-10" fill objectFit="cover" src={Hero} />
       </div>

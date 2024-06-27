@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import logo from '@/images/logo.svg'
 import Link from 'next/link'
 import SideMenu from '../sideMenu/SideMenu'
@@ -25,10 +25,27 @@ export const lists = [
 
 const Header = () => {
     const [toggle, setToggle] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.scrollY
+
+            if (scrollTop > 0) {
+                setIsScrolled(true)
+            } else {
+                setIsScrolled(false)
+            }
+        }
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    })
 
     return (
         <>
-            <div className='pt-4 px-12 max-lg:px-4 max-lg:pt-6'>
+            <div className={`fixed top-0 inset-x-0 z-20 py-4 px-12 max-lg:px-4 max-lg:pt-6 transition-all duration-100 ease-linear ${isScrolled ? 'bg-[rgba(0,0,0,0.74)] backdrop-blur-md' : 'bg-transparent'}`}>
                 <div className='flex justify-between items-center'>
                     <div className='flex items-center gap-4'>
                         <div>
