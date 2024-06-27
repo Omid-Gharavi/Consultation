@@ -40,7 +40,7 @@ const Services = () => {
                         <div key={index + 1}>
                             <div className='overflow-hidden rounded-t-xl'>
                                 <Image src={list.img} alt='cover'
-                                    className='transition-all duration-500 ease-in-out hover:scale-125'
+                                    className='transition-all duration-500 ease-in-out hover:scale-125 origin-center'
                                 />
                             </div>
                             <div
