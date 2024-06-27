@@ -28,7 +28,7 @@ const Facts = () => {
                     ))
                 }
             </div>
-            <div className='mt-[75px] h-1 bg-[#E7E9ED]'></div>
+            <div className='mt-[75px] h-[1px] bg-[#E7E9ED]'></div>
         </div>
     )
 }
