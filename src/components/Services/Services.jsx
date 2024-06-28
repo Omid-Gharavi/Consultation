@@ -29,8 +29,8 @@ const Services = () => {
     return (
         <div className='mt-20 mb-[120px] flex flex-col items-center gap-[92px]'>
             <div className='text-center max-w-[589px] px-4'>
-                <p className='text-5xl font-bold max-lg:text-3xl'>Services we offer for you</p>
-                <p className='mt-6 text-[19px] text-[#161C2D]'>
+                <p className='text-4xl font-bold max-lg:text-3xl'>Services we offer for you</p>
+                <p className='mt-6 text-[#161C2D]'>
                     With lots of unique blocks, you can easily build a page without coding. Build your next landing page.
                 </p>
             </div>

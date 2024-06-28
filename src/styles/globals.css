@@ -23,4 +23,9 @@ body {
   .lists:hover span {
     @apply w-full;
   }
+
+  .play {
+    @apply w-[12px] h-[12px] bg-[#68D585];
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+  }
 }
