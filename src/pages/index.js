@@ -4,6 +4,7 @@ import HeroSection from '@/components/hero/HeroSection'
 import Header from "@/components/header/Header";
 import Facts from "@/components/facts/Facts";
 import Services from "@/components/Services/Services";
+import Content from "@/components/content/Content";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       </div>
       <Facts />
       <Services />
+      <Content />
     </main>
   );
 }
