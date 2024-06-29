@@ -29,14 +29,14 @@ const Testimonial = () => {
     ]
 
     return (
-        <div className='flex flex-wrap justify-center mt-[100px] mb-[109px] gap-[60px]'>
+        <div className='flex flex-wrap justify-center mt-[100px] mb-[109px] gap-[60px] max-lg:gap-32'>
             {
                 lists.map((list, index) => (
                     <div className='flex flex-col items-center gap-[50px]'>
                         <div>
                             <Image src={list.img} alt='logo' />
                         </div>
-                        <p className='max-w-[324px] text-2xl text-center'>{list.text}</p>
+                        <p className='max-w-[324px] text-2xl text-center max-lg:text-xl'>{list.text}</p>
                         <div className='flex items-center gap-5'>
                             <div>
                                 <Image src={list.profile} alt='profile' />
