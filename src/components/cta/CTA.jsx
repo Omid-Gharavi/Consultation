@@ -63,10 +63,12 @@ const CTA = () => {
                                 onChange={(e) => {
                                     const value = e.target.value
                                     if (list.type === 'tel') {
-                                        const x = /^(\d{0,3})$/g
+                                        const x = /^(\d{0,3})\-?(\d{0,3})\-?(\d{0,4})$/gm;
                                         if (x.test(value)) {
                                             console.log('true')
                                             list.setValue(value)
+                                        } else {
+                                            return
                                         }
                                     } else {
                                         list.setValue(value)
