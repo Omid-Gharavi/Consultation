@@ -1,28 +1,41 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import chat from '@/images/chat.svg'
 
 const CTA = () => {
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [service, setService] = useState('')
+
     const lists = [
         {
             name: 'Name',
             placeholder: 'i.e. Johne Doe',
             type: 'text',
+            value: name,
+            setValue: setName
         },
         {
             name: 'Email',
             placeholder: 'i.e. john@mail.com',
             type: 'email',
+            value: email,
+            setValue: setEmail
         },
         {
             name: 'Phone',
             placeholder: 'i.e. 123-456-7890',
             type: 'tel',
+            value: phone,
+            setValue: setPhone
         },
         {
             name: 'Which service do you need?',
             placeholder: 'Select a service',
             type: 'text',
+            value: service,
+            setValue: setService
         },
     ]
 
@@ -42,7 +55,24 @@ const CTA = () => {
                     lists.map((list, index) => (
                         <div className='flex flex-col gap-4'>
                             <span className='text-white'>{list.name}</span>
-                            <input type={list.type} placeholder={list.placeholder} className='h-[50px] px-[18px] py-3 rounded-lg' />
+                            <input
+                                value={list.value}
+                                type={list.type}
+                                placeholder={list.placeholder}
+                                className='h-[50px] px-[18px] py-3 rounded-lg'
+                                onChange={(e) => {
+                                    const value = e.target.value
+                                    if (list.type === 'tel') {
+                                        const x = /^(\d{0,3})$/g
+                                        if (x.test(value)) {
+                                            console.log('true')
+                                            list.setValue(value)
+                                        }
+                                    } else {
+                                        list.setValue(value)
+                                    }
+                                }}
+                            />
                         </div>
                     ))
                 }
