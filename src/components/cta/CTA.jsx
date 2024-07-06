@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import chat from '@/images/chat.svg'
 
 const CTA = () => {
@@ -7,6 +7,7 @@ const CTA = () => {
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [service, setService] = useState('')
+    const [toggle, setToggle] = useState(false)
 
     const lists = [
         {
@@ -39,6 +40,12 @@ const CTA = () => {
         },
     ]
 
+    const services = ['food', 'toilet']
+
+    const filteredOptions = useMemo(() => {
+        return services.filter(s => s.toLowerCase().startsWith(service))
+    }, [services, service])
+
     return (
         <div className='ctaBody'>
             <div className=''>
@@ -55,26 +62,46 @@ const CTA = () => {
                     lists.map((list, index) => (
                         <div className='flex flex-col gap-4'>
                             <span className='text-white'>{list.name}</span>
-                            <input
-                                value={list.value}
-                                type={list.type}
-                                placeholder={list.placeholder}
-                                className='h-[50px] px-[18px] py-3 rounded-lg'
-                                onChange={(e) => {
-                                    const value = e.target.value
-                                    if (list.type === 'tel') {
-                                        const x = /^(\d{0,3})\-?(\d{0,3})\-?(\d{0,4})$/gm;
-                                        if (x.test(value)) {
-                                            console.log('true')
-                                            list.setValue(value)
+                            <div className='relative w-[300px] max-w-full'>
+                                <input
+                                    value={list.value}
+                                    type={list.type}
+                                    placeholder={list.placeholder}
+                                    className={`h-[50px] w-full py-3 rounded-lg ${list.placeholder === 'Select a service' ? 'pl-[18px] pr-11' : 'px-[18px]'}`}
+                                    onBlur={() => {
+                                        if (list.placeholder = 'Select a service') setToggle(false)
+                                    }}
+                                    onClick={() => {
+                                        if (list.placeholder = 'Select a service') setToggle(true)
+                                    }}
+                                    onChange={(e) => {
+                                        const value = e.target.value
+                                        if (list.type === 'tel') {
+                                            const x = /^(\d{0,3})\-?(\d{0,3})\-?(\d{0,4})$/gm;
+                                            if (x.test(value)) {
+                                                console.log('true')
+                                                list.setValue(value)
+                                            } else {
+                                                return
+                                            }
+                                        } else if (list.placeholder === 'Select a service') {
+                                            setService(value)
                                         } else {
-                                            return
+                                            list.setValue(value)
                                         }
-                                    } else {
-                                        list.setValue(value)
+                                    }}
+                                />
+                                <span className={`${list.placeholder === 'Select a service' ? 'block' : 'hidden'} ${toggle ? 'rotate-180' : 'rotate-0'} arrowDown`}></span>
+                                <div
+                                    className={`${list.placeholder === 'Select a service' ? toggle ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 translate-y-4' : 'hidden'} bg-white shadow-xl w-full
+                                    absolute top-[110%] left-0 rounded-lg transition-all duration-150 ease-in-out flex flex-col gap-4 px-4 py-2`}>
+                                    {
+                                        filteredOptions.map((service, index) => (
+                                            <div key={index}>{service}</div>
+                                        ))
                                     }
-                                }}
-                            />
+                                </div>
+                            </div>
                         </div>
                     ))
                 }
