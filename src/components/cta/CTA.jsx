@@ -40,7 +40,7 @@ const CTA = () => {
         },
     ]
 
-    const services = ['food', 'toilet']
+    const services = ['food', 'water', 'toilet']
 
     const filteredOptions = useMemo(() => {
         return services.filter(s => s.toLowerCase().startsWith(service))
@@ -94,11 +94,13 @@ const CTA = () => {
                                 <span className={`${list.placeholder === 'Select a service' ? 'block' : 'hidden'} ${toggle ? 'rotate-180' : 'rotate-0'} arrowDown`}></span>
                                 <div
                                     className={`${list.placeholder === 'Select a service' ? toggle ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 translate-y-4' : 'hidden'} bg-white shadow-xl w-full
-                                    absolute top-[110%] left-0 rounded-lg transition-all duration-150 ease-in-out flex flex-col gap-4 px-4 py-2`}>
+                                    absolute top-[110%] left-0 rounded-lg transition-all duration-150 ease-in-out flex flex-col gap-3 px-2 py-2`}>
                                     {
-                                        filteredOptions.map((service, index) => (
-                                            <div key={index}>{service}</div>
-                                        ))
+                                        filteredOptions.length > 0 ?
+                                            filteredOptions.map((service, index) => (
+                                                <div className='services' key={index}>{service}</div>
+                                            ))
+                                            : <div>Sorry! there is no such a service.</div>
                                     }
                                 </div>
                             </div>
