@@ -8,6 +8,7 @@ const CTA = () => {
     const [phone, setPhone] = useState('')
     const [service, setService] = useState('')
     const [toggle, setToggle] = useState(false)
+    const [select, setSelect] = useState('')
 
     const lists = [
         {
@@ -98,7 +99,17 @@ const CTA = () => {
                                     {
                                         filteredOptions.length > 0 ?
                                             filteredOptions.map((service, index) => (
-                                                <div className='services' key={index}>{service}</div>
+                                                <div
+                                                    onClick={() => {
+                                                        if (select === service) {
+                                                            setSelect('')
+                                                        } else {
+                                                            setSelect(service)
+                                                        }
+                                                        setToggle(false)
+                                                    }}
+                                                    className={`services ${select === service ? 'bg-zinc-300' : 'bg-transparent'}`}
+                                                    key={index}>{service}</div>
                                             ))
                                             : <div>Sorry! there is no such a service.</div>
                                     }
