@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import chat from '@/images/chat.svg'
 
 const CTA = () => {
@@ -9,6 +9,7 @@ const CTA = () => {
     const [service, setService] = useState('')
     const [toggle, setToggle] = useState(false)
     const [select, setSelect] = useState('')
+    const inputRef = useRef()
 
     const lists = [
         {
@@ -47,6 +48,22 @@ const CTA = () => {
         return services.filter(s => s.toLowerCase().startsWith(service))
     }, [services, service])
 
+    useEffect(() => {
+        const handleDocumentClick = (event) => {
+            if (inputRef.current && !inputRef.current.contains(event.target)) {
+                setToggle(false)
+            }
+        };
+        document.addEventListener('click', handleDocumentClick);
+        return () => {
+            document.removeEventListener('click', handleDocumentClick);
+        };
+    }, []);
+
+    const handleDivClick = (event) => {
+        event.stopPropagation();
+    };
+
     return (
         <div className='ctaBody'>
             <div className=''>
@@ -65,14 +82,12 @@ const CTA = () => {
                             <span className='text-white'>{list.name}</span>
                             <div className='relative w-[300px] max-w-full'>
                                 <input
+                                    ref={inputRef}
                                     value={list.value}
                                     type={list.type}
                                     placeholder={list.placeholder}
                                     className={`h-[50px] w-full py-3 rounded-lg ${list.placeholder === 'Select a service' ? 'pl-[18px] pr-11' : 'px-[18px]'}`}
-                                    onBlur={() => {
-                                        if (list.placeholder = 'Select a service') setToggle(false)
-                                    }}
-                                    onClick={() => {
+                                    onFocus={() => {
                                         if (list.placeholder = 'Select a service') setToggle(true)
                                     }}
                                     onChange={(e) => {
@@ -100,13 +115,14 @@ const CTA = () => {
                                         filteredOptions.length > 0 ?
                                             filteredOptions.map((service, index) => (
                                                 <div
-                                                    onClick={() => {
+                                                    onClick={(e) => {
+                                                        handleDivClick(e)
+                                                        inputRef.current.focus()
                                                         if (select === service) {
                                                             setSelect('')
                                                         } else {
                                                             setSelect(service)
                                                         }
-                                                        setToggle(false)
                                                     }}
                                                     className={`services ${select === service ? 'bg-zinc-300' : 'bg-transparent'}`}
                                                     key={index}>{service}</div>
