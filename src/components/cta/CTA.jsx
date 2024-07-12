@@ -143,8 +143,8 @@ const CTA = () => {
                     </div>
                 </div>
             </div>
-            <div className='my-[77px] flex items-center justify-center w-full'>
-                <p className='text-2xl'>
+            <div className='my-[77px] max-lg:px-4 flex flex-wrap items-center justify-center gap-6 w-full'>
+                <p className='text-2xl max-lg:text-center max-w-[407px]'>
                     Subscribe to our newsletter to get latest news on your inbox.
                 </p>
                 <div className='flex gap-5'>
@@ -153,7 +153,7 @@ const CTA = () => {
                         placeholder='Enter your email'
                         className='h-[50px] max-w-[290px] w-full border-solid border-[1px] py-3 px-[18px] rounded-lg'
                     />
-                    <div className=' h-[50px] w-[256px] flex justify-center items-center gap-11 rounded-lg bg-[#473BF0] text-white'>
+                    <div className='h-[50px] w-[256px] flex justify-center items-center gap-11 max-lg:gap-4 rounded-lg bg-[#473BF0] text-white'>
                         <p>Subscribe</p>
                         <Image src={tail} alt='tail' />
                     </div>
