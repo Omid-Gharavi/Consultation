@@ -38,7 +38,7 @@ const Footer = () => {
                             <p className='text-zinc-500'>{list.title}</p>
                             <ul className='flex flex-col gap-3 mt-5'>
                                 {list.items.map((item, index) => (
-                                    <li className={`${list.link ? 'text-indigo-700 cursor-pointer' : ''}`} key={index + 1}>{item}</li>
+                                    <li className={`${list.link ? 'text-indigo-700' : ''} cursor-pointer`} key={index + 1}>{item}</li>
                                 ))}
                             </ul>
                         </div>

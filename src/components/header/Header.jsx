@@ -19,7 +19,7 @@ export const lists = [
     },
     {
         text: 'Contact',
-        href: '#'
+        href: '/contact'
     },
 ]
 
