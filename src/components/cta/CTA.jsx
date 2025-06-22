@@ -80,7 +80,7 @@ const CTA = () => {
                 <div className='p-6 max-w-[350px] w-full bg-zinc-800 rounded-xl flex flex-col gap-4'>
                     {
                         lists.map((list, index) => (
-                            <div className='flex flex-col gap-4'>
+                            <div key={index + 1} className='flex flex-col gap-4'>
                                 <span className='text-white'>{list.name}</span>
                                 <div className='relative w-[300px] max-w-full'>
                                     <input

@@ -32,7 +32,7 @@ const Testimonial = () => {
         <div className='flex flex-wrap justify-center mt-[100px] gap-[60px] max-lg:gap-32'>
             {
                 lists.map((list, index) => (
-                    <div className='flex flex-col items-center gap-[50px]'>
+                    <div key={index + 1} className='flex flex-col items-center gap-[50px]'>
                         <div>
                             <Image src={list.img} alt='logo' />
                         </div>

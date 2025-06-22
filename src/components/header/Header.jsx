@@ -28,12 +28,6 @@ const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false)
 
     useEffect(() => {
-        const scrollTop = window.scrollY
-
-        if (scrollTop > 0) {
-            setIsScrolled(true)
-        }
-
         const handleScroll = () => {
             const scrollTop = window.scrollY
 
@@ -55,7 +49,7 @@ const Header = () => {
                 <div className='flex justify-between items-center'>
                     <div className='flex items-center gap-4'>
                         <div>
-                            <Image src={logo} />
+                            <Image src={logo} alt='logo' />
                         </div>
                         <ul className='max-lg:hidden flex gap-8 font-bold text-white'>
                             {

@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <div className="relative min-h-screen">
         <HeroSection />
-        <Image className="absolute -z-10" fill objectFit="cover" src={Hero} />
+        <Image className="absolute -z-10" fill objectFit="cover" src={Hero} alt="Hero" />
       </div>
       <Facts />
       <Services />

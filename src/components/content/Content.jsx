@@ -42,7 +42,7 @@ const Content = () => {
                     <div className='flex flex-col gap-[30px]'>
                         {
                             lists.map((list, index) => (
-                                <div className='flex gap-[22px]'>
+                                <div key={index + 1} className='flex gap-[22px]'>
                                     <div className='mt-[6px]'>
                                         <div
                                             className='flex justify-center items-center w-[43px] h-[43px] rounded-full bg-[#e2e4f9] text-[#473BF0] font-bold'>

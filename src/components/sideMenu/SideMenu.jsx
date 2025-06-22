@@ -7,7 +7,7 @@ import Link from 'next/link'
 const SideMenu = () => {
     return (
         <div>
-            <Image src={logo} />
+            <Image src={logo} alt='logo' />
             <div className='h-[2px] bg-white mt-[14px]'></div>
             <ul className='flex flex-col gap-5 mt-[14px]'>
                 {
